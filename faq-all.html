@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>よくある質問 | ガーデニアホーム横浜緑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #3d5a3d;
+            letter-spacing: 0.05em;
+            margin: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            position: absolute;
+            top: 50%;
+            left: 1.5rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #3d5a3d;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #3d5a3d;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: #7a9b7a;
+            background: rgba(122, 155, 122, 0.1);
+        }
+
+        .back-link {
+            color: #7a9b7a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid #7a9b7a;
+            border-radius: 4px;
+            background: rgba(122, 155, 122, 0.1);
+        }
+
+        .back-link:hover {
+            background: #7a9b7a;
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #3d5a3d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.3s forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #e8e8e8;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #7a9b7a;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.8rem 2rem;
+            cursor: pointer;
+            background: #fafafa;
+            transition: background 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f0f5f0;
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #3d5a3d;
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: #7a9b7a;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: white;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 2rem;
+        }
+
+        .faq-answer p {
+            color: #555;
+            line-height: 2;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 1.5rem;
+                position: relative;
+                min-height: 60px;
+                align-items: flex-start;
+            }
+
+            .logo {
+                align-self: flex-start;
+                margin-right: auto;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                right: 1.5rem;
+                transform: translateY(-50%);
+                z-index: 1001;
+            }
+
+            .hamburger-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            .hamburger-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 999;
+                padding: 2rem;
+            }
+
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+                transform: translateY(-15px);
+                transition: transform 0.4s ease;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            nav.active ul {
+                transform: translateY(0);
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                color: #3d5a3d;
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+            }
+
+            nav a:hover {
+                background: rgba(122, 155, 122, 0.1);
+                transform: scale(1.02);
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            /* テキストの可読性向上 */
+            .faq-question h3 {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            .faq-answer p {
+                font-size: 1rem;
+                line-height: 2.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1><a href="gardenia_home.html">ガーデニアホーム横濱緑</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="gardenia_home.html">ホーム</a></li>
+                    <li><a href="gardenia_home.html#features">コンセプト</a></li>
+                    <li><a href="gardenia_home.html#facility">施設案内</a></li>
+                    <li><a href="gallery.html">ギャラリー</a></li>
+                    <li><a href="gardenia_home.html#pricing">料金</a></li>
+                    <li><a href="gardenia_home.html#faq">よくある質問</a></li>
+                    <li><a href="gardenia_home.html#access">アクセス</a></li>
+                    <li><a href="gardenia_home.html#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>よくある質問</h1>
+        <p>入居や施設についてのご質問にお答えします</p>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>入居の条件はありますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>原則として、60歳以上で自立または軽度の介護が必要な方を対象としています。詳しい入居条件については、お気軽にお問い合わせください。見学時に詳しくご説明いたします。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>介護が必要になった場合はどうなりますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>住宅型有料老人ホームのため、介護が必要な場合は外部の介護サービス事業者と個別にご契約いただきます。事業者選びのご相談や、ケアマネージャーとの連携など、私たちが全面的にサポートいたしますので、ご安心ください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>見学はできますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、随時見学を受け付けております。事前にご予約をお願いいたします。施設内をご案内し、居室や共用スペース、食事の試食（ご希望の場合）も可能です。お気軽にお問い合わせください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>入居時に必要な費用を教えてください</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>入居一時金300万円（返還金制度あり）と、月額費用16万円（管理費、食費、光熱費込み）が基本費用となります。詳細な料金体系については、見学時に詳しくご説明いたします。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>食事の対応について教えてください</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>栄養士が監修した食事を1日3食提供しています。常食、刻み食、ペースト食など、お身体の状態に合わせた食事形態に対応可能です。アレルギーや持病による食事制限がある方にも個別対応いたします。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>外出や外泊は自由にできますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、基本的に外出・外泊は自由です。お一人での外出が難しい場合は、スタッフがサポートいたします。ご家族との外出・外泊も可能ですので、ご自由にお過ごしください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>ペットを連れて入居できますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>申し訳ございませんが、衛生管理およびアレルギーをお持ちの方への配慮から、ペットとのご入居はお断りしております。ご理解いただけますと幸いです。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>医療的なケアは受けられますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>看護師が常駐し、日常的な健康管理を行っています。協力医療機関との連携により、定期的な往診や緊急時の対応も可能です。ただし、常時医療的ケアが必要な場合は、ご相談の上で対応可否を判断させていただきます。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>面会時間に制限はありますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>基本的に面会時間は9:00〜18:00となっております。ただし、ご事情がある場合はご相談ください。できる限り柔軟に対応させていただきます。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>居室に持ち込める家具や家電はありますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>テレビ、ラジオ、小型冷蔵庫、加湿器などはお持ち込みいただけます。使い慣れた家具もスペースが許す範囲で配置可能です。火気を使用する器具や安全上問題のある設備については制限がありますので、事前にご相談ください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>レクリエーションへの参加は必須ですか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>いいえ、レクリエーションへの参加は任意です。ご自身の興味や体調に合わせて自由に参加していただけます。無理に参加していただく必要はございません。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>入居までの流れを教えてください</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>①見学・相談 → ②入居申込 → ③健康診断・面談 → ④契約 → ⑤入居準備 → ⑥ご入居、という流れになります。お申込から入居まで通常2〜4週間程度です。詳しくはお問い合わせください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>体験入居はできますか？</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>はい、1泊2日からの体験入居が可能です（有料）。実際の生活を体験していただくことで、入居後のイメージがより明確になります。ご希望の方はお問い合わせください。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>退去時の返還金について教えてください</h3>
+                        <span class="faq-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>入居一時金は5年間で償却いたします。償却期間内に退去された場合、未償却分を返還いたします。詳しい計算方法については、契約時に詳しくご説明いたします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ガーデニアホーム横濱緑. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ハンバーガーメニューのトグル機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const nav = document.querySelector('nav');
+            
+            hamburgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            // ナビゲーションリンクのクリック処理
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // ハンバーガーメニューを閉じる
+                    hamburgerMenu.classList.remove('active');
+                    nav.classList.remove('active');
+                    
+                    // リンクのデフォルト動作を許可
+                    // ページ内リンクの場合はスムーズスクロールを実装
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

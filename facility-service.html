@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サービス内容 | ガーデニアホーム横浜緑</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.75rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo h1 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #3d5a3d;
+            letter-spacing: 0.05em;
+            margin: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+            position: absolute;
+            top: 50%;
+            left: 1.5rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ハンバーガーメニュー */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #3d5a3d;
+            transition: all 0.3s ease;
+            border-radius: 1px;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(4px, 4px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4px, -4px);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+        }
+
+        nav a {
+            color: #3d5a3d;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: #7a9b7a;
+            background: rgba(122, 155, 122, 0.1);
+        }
+
+        .back-link {
+            color: #7a9b7a;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border: 1px solid #7a9b7a;
+            border-radius: 4px;
+            background: rgba(122, 155, 122, 0.1);
+        }
+
+        .back-link:hover {
+            background: #7a9b7a;
+            color: white;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: #3d5a3d;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.3s forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            letter-spacing: 0.05em;
+            opacity: 0;
+            animation: fadeInUp 1.2s ease-out 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .content-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: #3d5a3d;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .content-section p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a9b7a;
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            margin: 3rem 0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .feature-box {
+            background: #fafafa;
+            padding: 2.5rem;
+            border-left: 3px solid #7a9b7a;
+        }
+
+        .feature-box h3 {
+            color: #3d5a3d;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-box p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        footer {
+            background: #2c2c2c;
+            color: white;
+            text-align: center;
+            padding: 2.5rem;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.5rem 1.5rem;
+                position: relative;
+                min-height: 60px;
+                align-items: flex-start;
+            }
+
+            .logo {
+                align-self: flex-start;
+                margin-right: auto;
+            }
+
+            .hamburger-menu {
+                display: flex;
+                position: absolute;
+                top: 50%;
+                right: 1.5rem;
+                transform: translateY(-50%);
+                z-index: 1001;
+            }
+
+            .hamburger-menu.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger-menu.active span:nth-child(2) {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+
+            .hamburger-menu.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+                z-index: 999;
+                padding: 2rem;
+            }
+
+            nav.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+                transform: translateY(-15px);
+                transition: transform 0.4s ease;
+                width: 100%;
+                max-width: 350px;
+            }
+
+            nav.active ul {
+                transform: translateY(0);
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                font-size: 1rem;
+                padding: 0.75rem 1rem;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+                color: #3d5a3d;
+                text-decoration: none;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+            }
+
+            nav a:hover {
+                background: rgba(122, 155, 122, 0.1);
+                transform: scale(1.02);
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .image-placeholder {
+                height: 250px;
+            }
+
+            /* テキストの可読性向上 */
+            .content-section p {
+                font-size: 1rem;
+                line-height: 2.2;
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-box p {
+                font-size: 1rem;
+                line-height: 2;
+            }
+
+            /* 見出しの視認性向上 */
+            .content-section h2 {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-box h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            /* 余白の調整 */
+            .feature-box {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1><a href="gardenia_home.html">ガーデニアホーム横濱緑</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="gardenia_home.html">ホーム</a></li>
+                    <li><a href="gardenia_home.html#features">コンセプト</a></li>
+                    <li><a href="gardenia_home.html#facility">施設案内</a></li>
+                    <li><a href="gallery.html">ギャラリー</a></li>
+                    <li><a href="gardenia_home.html#pricing">料金</a></li>
+                    <li><a href="gardenia_home.html#faq">よくある質問</a></li>
+                    <li><a href="gardenia_home.html#access">アクセス</a></li>
+                    <li><a href="gardenia_home.html#contact">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>サービス内容</h1>
+        <p>充実したサービスで、安心の暮らしをサポート</p>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>基本サービスの充実</h2>
+            <p>ガーデニアホーム横浜緑では、快適な暮らしを支える様々なサービスを提供しています。食事、健康管理、生活相談など、日常生活に必要なサポートを総合的に行い、安心して暮らしていただける環境を整えています。</p>
+            <p>サービスは画一的なものではなく、お一人おひとりの状態やご希望に合わせて柔軟に対応。「こんなサービスがあったらいいな」というご要望にも、できる限りお応えします。</p>
+            
+            <div class="image-placeholder">
+                スタッフによるサービス提供の様子
+            </div>
+
+            <h2>食事サービス</h2>
+            <p>栄養士が監修した、栄養バランスの取れた美味しい食事を1日3食提供しています。旬の食材を使った季節感のあるメニューで、毎日の食事を楽しんでいただけます。</p>
+            <p>食事形態は常食、刻み食、ペースト食など、お身体の状態に合わせて対応。アレルギーや持病による食事制限がある方にも個別対応いたします。食堂での会食を基本としていますが、体調不良時には居室への配膳も可能です。</p>
+
+            <div class="two-column">
+                <div class="feature-box">
+                    <h3>生活相談サービス</h3>
+                    <p>生活相談員が常駐し、日常生活でのお困りごとや、ご家族との連絡調整など、様々なご相談に対応します。</p>
+                </div>
+                <div class="feature-box">
+                    <h3>健康管理サービス</h3>
+                    <p>看護師による定期的な健康チェック、服薬管理、体調の変化への対応など、健康面でのサポートを提供します。</p>
+                </div>
+            </div>
+
+            <div class="image-placeholder">
+                食事提供や健康管理の様子
+            </div>
+
+            <h2>レクリエーション・アクティビティ</h2>
+            <p>心身の健康維持と、生活の質の向上を目的として、様々なレクリエーションやアクティビティを実施しています。体操、手芸、音楽、季節の行事など、多彩なプログラムをご用意しています。</p>
+            <p>参加は自由で、ご自身の興味や体調に合わせて選んでいただけます。新しい趣味の発見や、入居者様同士の交流のきっかけとしても好評です。</p>
+
+            <div class="two-column">
+                <div class="feature-box">
+                    <h3>居室清掃サービス</h3>
+                    <p>定期的な居室清掃を実施。シーツ交換やゴミの回収なども行い、いつも清潔で快適な環境を保ちます。</p>
+                </div>
+                <div class="feature-box">
+                    <h3>洗濯サービス</h3>
+                    <p>衣類の洗濯サービスを提供。大切な衣類を丁寧に洗濯し、きれいな状態でお返しします。</p>
+                </div>
+            </div>
+
+            <h2>緊急時対応サービス</h2>
+            <p>24時間体制でスタッフが常駐しているため、緊急時にも迅速に対応できます。各居室のナースコールは常時監視しており、呼び出しがあればすぐにスタッフが駆けつけます。</p>
+            <p>また、協力医療機関との連携体制も整っており、必要に応じて医療機関への連絡や救急搬送の手配も行います。夜間や休日でも安心してお過ごしいただけます。</p>
+
+            <div class="two-column">
+                <div class="feature-box">
+                    <h3>来客対応</h3>
+                    <p>ご家族やご友人の面会は、基本的にいつでも可能です。面会室もご用意しており、ゆっくりとお過ごしいただけます。</p>
+                </div>
+                <div class="feature-box">
+                    <h3>外出サポート</h3>
+                    <p>通院や買い物など、外出が必要な場合のサポートも行います。付き添いや送迎についてもご相談ください。</p>
+                </div>
+            </div>
+
+            <h2>介護サービスとの連携</h2>
+            <p>住宅型有料老人ホームのため、介護サービスが必要な場合は外部の介護事業者と個別にご契約いただきます。しかし、事業者選びのご相談や、ケアマネージャーとの連携など、私たちが全面的にサポートいたします。</p>
+            <p>信頼できる事業者との連携体制も整っており、スムーズにサービスを受けていただけます。介護度が上がっても、引き続き安心して暮らしていただける環境を提供します。</p>
+        </section>
+    </div>
+
+    <script>
+        // ハンバーガーメニューのトグル機能
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const nav = document.querySelector('nav');
+            
+            hamburgerMenu.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            // ナビゲーションリンクのクリック処理
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // ハンバーガーメニューを閉じる
+                    hamburgerMenu.classList.remove('active');
+                    nav.classList.remove('active');
+                    
+                    // リンクのデフォルト動作を許可
+                    // ページ内リンクの場合はスムーズスクロールを実装
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    </footer>
+</body>
+</html>
