@@ -597,6 +597,26 @@
                     }
                 });
             });
+
+            // FAQのアコーディオン機能
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const isActive = faqItem.classList.contains('active');
+                    
+                    // すべてのFAQを閉じる
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // クリックされたFAQが閉じていた場合は開く
+                    if (!isActive) {
+                        faqItem.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
