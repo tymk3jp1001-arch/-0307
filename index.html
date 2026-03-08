@@ -46,7 +46,7 @@
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 3rem;
+            padding: calc(1rem + env(safe-area-inset-top)) 3rem 1rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -106,7 +106,7 @@
         /* メインビジュアル */
         .hero {
             position: relative;
-            height: 85vh;
+            height: 85dvh;
             min-height: 600px;
             background: #f5f5f5;
             display: flex;
@@ -874,14 +874,14 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1.5rem 2rem;
-                position: relative;
-                min-height: 80px;
-                align-items: flex-start;
-            }
+        .header-content {
+            flex-direction: column;
+            gap: 1rem;
+            padding: calc(1.5rem + env(safe-area-inset-top)) 2rem 1.5rem 2rem;
+            position: relative;
+            min-height: 80px;
+            align-items: flex-start;
+        }
 
             .logo {
                 align-self: flex-start;
@@ -968,10 +968,10 @@
                 transform: scale(1.02);
             }
 
-            .hero {
-                height: 70vh;
-                min-height: 500px;
-            }
+        .hero {
+            height: 70dvh;
+            min-height: 500px;
+        }
 
             .hero h2 {
                 font-size: 2.2rem;

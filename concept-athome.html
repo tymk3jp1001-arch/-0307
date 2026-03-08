@@ -32,7 +32,7 @@
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 1rem 3rem;
+            padding: calc(1rem + env(safe-area-inset-top)) 3rem 1rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -115,7 +115,7 @@
             .header-content {
                 flex-direction: column;
                 gap: 0.5rem;
-                padding: 0.5rem 1.5rem;
+                padding: calc(0.5rem + env(safe-area-inset-top)) 1.5rem 0.5rem 1.5rem;
                 position: relative;
                 min-height: 60px;
                 align-items: flex-start;
@@ -211,7 +211,7 @@
         /* ヒーローセクション */
         .hero {
             background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
-            padding: 5rem 0;
+            padding: calc(5rem + env(safe-area-inset-top)) 0 5rem 0;
             text-align: center;
         }
 
