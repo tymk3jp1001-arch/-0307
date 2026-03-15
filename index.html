@@ -1187,6 +1187,39 @@
 
         // 5秒ごとに自動切り替え
         autoPlayInterval = setInterval(autoPlay, 5000);
+
+        // スワイプ操作を追加
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        // タッチ開始
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        // タッチ終了
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        // スワイプ判定
+        function handleSwipe() {
+            const swipeThreshold = 50; // スワイプと判定する最小距離
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // 右から左へのスワイプ（次のフレーズへ）
+                    const nextIndex = (currentIndex + 1) % phrases.length;
+                    changePhrase(nextIndex);
+                } else {
+                    // 左から右へのスワイプ（前のフレーズへ）
+                    const prevIndex = (currentIndex - 1 + phrases.length) % phrases.length;
+                    changePhrase(prevIndex);
+                }
+            }
+        }
     </script>
 
     <script>
