@@ -165,14 +165,22 @@
             transition: opacity 0.5s ease-in-out, transform 0.6s ease-in-out;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 0;
-            font-weight: 300;
-            letter-spacing: 0.15em;
-            text-shadow: 0 1px 10px rgba(0,0,0,0.3);
+
+        .hero-indicators-container {
+            position: absolute;
+            bottom: 10rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .hero-indicators {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            z-index: 10;
             opacity: 0;
-            animation: fadeInUp 1.2s ease-out 0.6s forwards;
+            animation: fadeInUp 1.2s ease-out 0.8s forwards;
         }
 
         .hero-bottom {
@@ -182,17 +190,9 @@
             transform: translateX(-50%);
             z-index: 10;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             gap: 2rem;
-        }
-
-        .hero-indicators {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            opacity: 0;
-            animation: fadeInUp 1.2s ease-out 0.8s forwards;
         }
 
         .indicator {
@@ -231,7 +231,7 @@
             display: inline-block;
             background: rgba(255, 255, 255, 0.95);
             color: #3d5a3d;
-            padding: 1.2rem 3.5rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 0;
             text-decoration: none;
             font-weight: 400;
@@ -241,15 +241,32 @@
             border: 1px solid rgba(255,255,255,0.3);
             opacity: 0;
             animation: fadeInUp 1.2s ease-out 1s forwards;
+            width: 280px;
+            text-align: center;
         }
 
         /* スマホ用CTAボタンのスタイル調整 */
         @media (max-width: 768px) {
             .cta-button {
-                padding: 0.8rem 3rem;
+                padding: 0.8rem 2rem;
                 width: 100%;
                 max-width: 300px;
                 white-space: nowrap;
+            }
+        }
+
+        /* スマホ用ヒーローセクションのボタン配置調整 */
+        @media (max-width: 768px) {
+            .hero-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                bottom: 2rem;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -1120,15 +1137,17 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h2 id="hero-title">家族のように、<br>あたたかく</h2>
-            <p class="hero-subtitle">少人数制・アットホームな雰囲気</p>
         </div>
-        <div class="hero-bottom">
+        <div class="hero-indicators-container">
             <div class="hero-indicators">
                 <button class="indicator active" data-index="0"></button>
                 <button class="indicator" data-index="1"></button>
                 <button class="indicator" data-index="2"></button>
             </div>
+        </div>
+        <div class="hero-bottom">
             <a href="gallery.html" class="cta-button">施設の様子を見る</a>
+            <a href="notice.html" class="cta-button">お知らせ</a>
         </div>
     </section>
 
