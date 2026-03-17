@@ -46,9 +46,12 @@
             font-family: 'Noto Sans JP', sans-serif;
         }
 
-        .logo a {
-            text-decoration: none;
-            color: inherit;
+        .logo p {
+            font-size: 0.75rem;
+            color: #7a9b7a;
+            margin-top: 0.2rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
         }
 
         /* ハンバーガーメニュー */
@@ -103,7 +106,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2.5rem;
             margin: 0;
         }
 
@@ -111,34 +114,31 @@
             color: #3d5a3d;
             text-decoration: none;
             font-weight: 400;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             letter-spacing: 0.05em;
             transition: color 0.3s;
-            padding: 0.5rem 0.75rem;
-            border-radius: 4px;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #7a9b7a;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         nav a:hover {
             color: #7a9b7a;
-            background: rgba(122, 155, 122, 0.1);
         }
 
-        .back-link {
-            color: #7a9b7a;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: color 0.3s;
-            padding: 0.5rem 1rem;
-            border: 1px solid #7a9b7a;
-            border-radius: 4px;
-            background: rgba(122, 155, 122, 0.1);
-        }
-
-        .back-link:hover {
-            background: #7a9b7a;
-            color: white;
-        }
 
         .hero {
             background: linear-gradient(135deg, #e8f0e8 0%, #d4e4d4 100%);
@@ -499,7 +499,8 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <h1><a href="index.html">ガーデニアホーム横濱緑</a></h1>
+                <h1>ガーデニアホーム横濱緑</h1>
+                <p>GARDENIA HOME YOKOHAMA MIDORI</p>
             </div>
             <nav>
                 <ul>
