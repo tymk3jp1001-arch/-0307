@@ -204,6 +204,11 @@
             letter-spacing: 0.05em;
         }
 
+        .num-font {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 300;
+        }
+
         .content-section p {
             font-size: 1rem;
             color: #555;
@@ -247,6 +252,36 @@
         .feature-box p {
             font-size: 0.95rem;
             color: #666;
+        }
+
+        .medical-list {
+            list-style: none;
+            margin-top: 1rem;
+            padding: 0;
+        }
+
+        .medical-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .medical-list li::before {
+            content: "・";
+            position: absolute;
+            left: 0;
+            color: #7a9b7a;
+        }
+
+        .medical-list a {
+            color: #3d5a3d;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .medical-list a:hover {
+            color: #7a9b7a;
+            text-decoration: underline;
         }
 
         footer {
@@ -456,47 +491,24 @@
 
     <div class="container">
         <section class="content-section">
-            <h2>経験豊富なスタッフによる24時間体制</h2>
-            <p>ガーデニアホーム横浜緑では、介護福祉士、看護師、生活相談員など、経験豊富な専門スタッフが24時間体制で常駐しています。日中はもちろん、夜間も安心してお休みいただけるよう、万全の体制を整えています。</p>
-            <p>スタッフは定期的な研修を受けており、最新の介護技術や知識を身につけています。また、お一人おひとりの状態に合わせた適切なケアを提供できるよう、スタッフ間での情報共有も徹底しています。</p>
-            
+            <h2>経験豊富なスタッフによる<span class="num-font">24</span>時間体制</h2>
+            <p>ガーデニアホーム横濱緑では経験豊富な専門スタッフが24時間体制で常駐しています。日中はもちろん、夜間も安心してお休みいただけるよう、お一人おひとりの状態に寄り添いながら見守ります。</p>
+            <p>ちょっとした変化や不安にもすぐに気づき、迅速に対応できる体制を整えています。</p>
+            <p>また、各居室にナースコールを設置しており、緊急時にはすぐにスタッフが駆けつけられる体制です。</p>
+            <p>安心して過ごせる毎日を、私たちがそばで支えます。</p>
             <div class="image-placeholder">
                 スタッフと入居者様の日常的な関わりの写真
             </div>
+            <h2>医療機関との連携</h2>
+            <p>近隣の医療機関と密に連携。定期的な往診や、緊急時の迅速な対応が可能です。</p>
+            <ul class="medical-list">
+                <li><a href="https://www.shinmidori.com/" target="_blank" rel="noopener">医療法人社団　三喜会　横浜新緑総合病院</a></li>
+                <li><a href="https://www.heiikukai.com/clinic/eda/#anc3" target="_blank" rel="noopener">医療法人社団　平郁会　みんなの荏田クリニック</a></li>
+                <li><a href="https://higashirinkan-shika.jp/" target="_blank" rel="noopener">ひがし林間歯科</a></li>
+            </ul>
 
-            <h2>生活全般をトータルサポート</h2>
-            <p>私たちのサポートは、介護だけにとどまりません。日々の生活相談、健康管理、レクリエーションの企画運営まで、生活全般をトータルでサポートしています。</p>
-            <p>「こんなことで相談してもいいのかな」と思われるような小さなことでも、遠慮なくお声がけください。趣味の相談、ご家族との連絡調整、外出の付き添いなど、できる限りのサポートをさせていただきます。</p>
 
-            <div class="two-column">
-                <div class="feature-box">
-                    <h3>生活相談</h3>
-                    <p>日常生活での困りごと、ご家族との連絡調整、各種手続きのサポートなど、生活全般のご相談に応じます。</p>
-                </div>
-                <div class="feature-box">
-                    <h3>健康管理</h3>
-                    <p>看護師による定期的な健康チェック、服薬管理、体調の変化への迅速な対応など、健康面でのサポートも充実しています。</p>
-                </div>
-            </div>
 
-            <div class="image-placeholder">
-                スタッフによる健康チェックやサポートの様子
-            </div>
-
-            <h2>介護が必要になっても安心</h2>
-            <p>住宅型有料老人ホームのため、介護が必要な場合は外部の介護サービス事業者と契約していただく形になります。しかし、事業者選びのご相談や、ケアマネージャーとの連携など、私たちが全面的にサポートいたします。</p>
-            <p>実績のある信頼できる事業者との連携体制も整っており、スムーズにサービスを受けていただけます。介護度が上がっても、住み慣れた環境で安心して暮らし続けていただけるよう、スタッフ一同でサポートいたします。</p>
-
-            <div class="two-column">
-                <div class="feature-box">
-                    <h3>緊急時対応</h3>
-                    <p>各居室にナースコールを設置。24時間いつでも、すぐにスタッフが駆けつけられる体制を整えています。</p>
-                </div>
-                <div class="feature-box">
-                    <h3>医療機関との連携</h3>
-                    <p>近隣の医療機関と密に連携。定期的な往診や、緊急時の迅速な対応が可能です。</p>
-                </div>
-            </div>
         </section>
     </div>
 
